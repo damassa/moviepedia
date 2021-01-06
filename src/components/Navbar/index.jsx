@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddMovie from "../AddMovie";
 import User from "./User";
+import Button from "../style/Button";
 
 
 const Index = () => {
@@ -9,9 +10,9 @@ const Index = () => {
     return (
       <section>
         <User />
-        <button onClick={() => setShowModal(true)} size="lg">
-          Add movie
-        </button>
+        <Button onClick={() => setShowModal(true)} size="lg">
+          Insert movie
+        </Button>
         {showModal && <AddMovie clickedOut={() => setShowModal(false)} />}
       </section>
     );

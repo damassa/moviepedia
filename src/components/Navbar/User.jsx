@@ -1,5 +1,23 @@
+import Button from "../style/Button";
+
 import { useHistory } from "react-router-dom";
 import { auth } from '../../firebase';
+import styled from "styled-components";
+
+const UserContainer = styled.div`
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px 0 0;
+`;
+
+const Name = styled.p`
+  margin: 0 20px;
+  font-size: 16px;
+  b {
+    text-transform: capitalize;
+  }
+`;
 
 const User = () => {
     const history = useHistory();
@@ -14,14 +32,14 @@ const User = () => {
     };
   
     return (
-      <section>
-        <strong>
+      <UserContainer>
+        <Name style={{fontSize: 20}}>
           Welcome, <b>{auth.currentUser.displayName}</b>
-        </strong>
-        <button onClick={logout} color="red">
+        </Name>
+        <Button onClick={logout} color="red">
           logout
-        </button>
-      </section>
+        </Button>
+      </UserContainer>
     );
   };
   

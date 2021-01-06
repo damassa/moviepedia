@@ -1,3 +1,7 @@
+import Form from "../components/style/Form";
+import Input from "../components/style/Input";
+import Button from "../components/style/Button";
+
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { useHistory } from "react-router-dom";
@@ -26,18 +30,18 @@ const Login = () => {
 
   return (
     <section>
-      <form onSubmit={submit}>
+      <Form onSubmit={submit}>
         <p>
           Log in the <b>Moviepedia</b>!
         </p>
-        <input type="email" name="email" placeholder="email" />
-        <input type="password" name="password" placeholder="password" />
-        <button type="submit" loading={loading}>
+        <Input type="email" name="email" placeholder="email" />
+        <Input type="password" name="password" placeholder="password" />
+        <Button type="submit" loading={loading}>
           go in!
-        </button>
+        </Button>
         <p>Not registered?</p>
         <Link to="/register">Register here!</Link>
-      </form>
+      </Form>
     </section>
   );
 };
