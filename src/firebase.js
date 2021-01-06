@@ -2,15 +2,14 @@ import firebase from 'firebase/app';
 import "firebase/database";
 import "firebase/auth";
 
-// Your web app's Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyAnuQluxLoAHWj8ziPQNkFNVvF715xbfZU",
-    authDomain: "bdav-6961a.firebaseapp.com",
-    databaseURL: "https://bdav-6961a-default-rtdb.firebaseio.com",
-    projectId: "bdav-6961a",
-    storageBucket: "bdav-6961a.appspot.com",
-    messagingSenderId: "485447649646",
-    appId: "1:485447649646:web:6a1a32dc468aba61ced97f"
+const firebaseConfig = {
+    apiKey: "AIzaSyBAsgTKR-6Ne7yxC9PwYceB6LRLrvPCTmA",
+    authDomain: "moviepedia-9c00f.firebaseapp.com",
+    projectId: "moviepedia-9c00f",
+    storageBucket: "moviepedia-9c00f.appspot.com",
+    messagingSenderId: "436258488505",
+    appId: "1:436258488505:web:0edd1be2039330aa36db68",
+    measurementId: "G-BM2ZFCRKRY"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

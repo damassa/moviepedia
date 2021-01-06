@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { moviesRef, handleSnapshot } from "../firebase";
 
+import Navbar from '../components/Navbar';
+import Card from "../components/style/Card";
+
 const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -39,12 +42,12 @@ const Home = () => {
 
   const ListMovies = () =>
     movies.map((movie) => (
-      <div onClick={() => setSelectedMovie(movie)} movie={movie} key={movie.id} />
+      <Card onClick={() => setSelectedMovie(movie)} movie={movie} key={movie.id} />
     ));
 
   return (
     <div>
-      <nav />
+      <Navbar />
       <h1>My movies</h1>
 
       <form direction="row" onSubmit={searchMovies}>
@@ -81,7 +84,7 @@ const Home = () => {
           <ListMovies />
         </div>
       ) : (
-        <p>Ops! Não encontramos nenhum jogo :/</p>
+        <p>No movies found =/</p>
       )}
 
       {selectedMovie && (

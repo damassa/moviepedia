@@ -23,7 +23,7 @@ const Register = () => {
       history.push("/");
     } catch (err) {
       console.log(err);
-      alert(`Error: ${err.message}`);
+      alert(`This error ocurred: ${err.message}`);
     }
     setLoading(false);
   };
@@ -31,9 +31,9 @@ const Register = () => {
   return (
     <section>
       <form onSubmit={submit}>
-        <h1>
+        <p>
           <b>Sign in</b> on Moviepedia
-        </h1>
+        </p>
         <input type="text" name="name" placeholder="full name" />
         <input type="email" name="email" placeholder="email" />
         <input type="password" name="password" placeholder="senha" />

@@ -25,7 +25,7 @@ const Routes = () => (
     <Switch>
       <PrivateRoute path="/" exact={true} component={Home} />
       <PublicRoute path="/login" component={Login} />
-      <PublicRoute path="/cadastro" component={Register} />
+      <PublicRoute path="/register" component={Register} />
       <Route path="*">
         <Redirect to="/" />
       </Route>

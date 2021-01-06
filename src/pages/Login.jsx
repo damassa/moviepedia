@@ -17,8 +17,8 @@ const Login = () => {
     try {
       await auth.signInWithEmailAndPassword(email, password);
       history.push("/");
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
       alert("Invalid user or password");
     }
     setLoading(false);
@@ -27,16 +27,16 @@ const Login = () => {
   return (
     <section>
       <form onSubmit={submit}>
-        <h1>
+        <p>
           Log in the <b>Moviepedia</b>!
-        </h1>
+        </p>
         <input type="email" name="email" placeholder="email" />
-        <input type="password" name="password" placeholder="senha" />
+        <input type="password" name="password" placeholder="password" />
         <button type="submit" loading={loading}>
-          Entrar
+          go in!
         </button>
         <p>Not registered?</p>
-        <Link to="/cadastro">Register here!</Link>
+        <Link to="/register">Register here!</Link>
       </form>
     </section>
   );
