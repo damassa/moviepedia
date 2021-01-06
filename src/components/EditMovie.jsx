@@ -23,15 +23,18 @@ const EditMovie = ({ clickedOut, movie }) => {
     setUpdateLoading(true);
 
     try {
+      const image = getFieldValue("image");
       const name = getFieldValue("name");
       const director = getFieldValue("director");
       const year = getFieldValue("year");
 
-      const data = { name, director, year };
+      const data = { image, name, director, year };
 
       await moviesRef.child(movie.id).update(data);
       clickedOut();
-    } catch (error) {}
+    } catch (error) {
+      console.log("Error");
+    }
 
     setUpdateLoading(false);
   };
@@ -39,13 +42,19 @@ const EditMovie = ({ clickedOut, movie }) => {
   return (
     <Modal clickedOut={clickedOut}>
       <h2>
-        Altere o <b>jogo</b>
+        Edit your movie
       </h2>
       <form onSubmit={updateMovie}>
         <input
           type="text"
+          name="image"
+          placeholder="image"
+          defaultValue={movie.image}
+        />
+        <input
+          type="text"
           name="name"
-          placeholder="nome"
+          placeholder="name"
           defaultValue={movie.name}
         />
         <input
@@ -68,7 +77,7 @@ const EditMovie = ({ clickedOut, movie }) => {
           onClick={deleteMovie}
           loading={deleteLoading}
         >
-          Deletar
+          delete
         </button>
       </form>
     </Modal>

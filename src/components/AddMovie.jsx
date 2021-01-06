@@ -9,11 +9,12 @@ const AddMovie = ({ clickedOut }) => {
   const insert = async (e) => {
     e.preventDefault();
     setLoading(true);
+    const image = getFieldValue("image", false);
     const name = getFieldValue("name");
     const director = getFieldValue("director");
     const year = getFieldValue("year");
 
-    const data = { name, director, year };
+    const data = { image, name, director, year };
 
     try {
       await moviesRef.push(data);
@@ -30,6 +31,7 @@ const AddMovie = ({ clickedOut }) => {
         Add a new movie
       </h1>
       <form onSubmit={insert}>
+        <input type="text" name="image" placeholder="image" />
         <input type="text" name="name" placeholder="name" />
         <input type="text" name="director" placeholder="director" />
         <input

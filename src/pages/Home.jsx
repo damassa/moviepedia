@@ -1,13 +1,57 @@
 import { useEffect, useState } from "react";
 import { moviesRef, handleSnapshot } from "../firebase";
+import styled from 'styled-components';
 
 import Navbar from '../components/Navbar';
+import EditMovie from '../components/EditMovie';
 import Card from "../components/style/Card";
+import UIForm from '../components/style/Form';
+import Button from '../components/style/Button';
+import Input from '../components/style/Input';
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const Title = styled.h1`
+  color: purple;
+  text-transform: uppercase;
+  font-size: 28px;
+  margin: 50px 0 20px;
+  padding: 15px 0;
+  width: 100%;
+  text-align: center;
+`;
+
+const List = styled.div`
+  width: 100%auto;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+`;
+
+const Form = styled(UIForm)`
+  width: 100%;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  label {
+    color: #fff;
+  }
+`;
+
+const Search = styled(Button)`
+  margin-left: 20px;
+  transform: scale(1.2);
+`;
+
 
 const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [orderField, setOrderField] = useState("rating");
+  const [orderField, setOrderField] = useState("name");
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
 
@@ -46,21 +90,21 @@ const Home = () => {
     ));
 
   return (
-    <div>
+    <Container>
       <Navbar />
-      <h1>My movies</h1>
+      <Title>My movies</Title>
 
-      <form direction="row" onSubmit={searchMovies}>
+      <Form direction="row" onSubmit={searchMovies}>
         <div>
-          <input
+          <Input
             name="search"
             type="text"
             placeholder="Search your movie"
             light
           />
-          <button loading={loading} type="submit">
-            Buscar
-          </button>
+          <Search loading={loading} type="submit">
+            search
+          </Search>
         </div>
 
         <div>
@@ -77,23 +121,23 @@ const Home = () => {
             <option value="year">Year</option>
           </select>
         </div>
-      </form>
+      </Form>
 
       {movies.length ? (
-        <div>
+        <List>
           <ListMovies />
-        </div>
+        </List>
       ) : (
         <p>No movies found =/</p>
       )}
 
       {selectedMovie && (
-        <div
+        <EditMovie
           movie={selectedMovie}
           clickedOut={() => setSelectedMovie(null)}
         />
       )}
-    </div>
+    </Container>
   );
 };
 
