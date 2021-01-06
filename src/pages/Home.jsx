@@ -82,7 +82,9 @@ const Home = () => {
     setLoading(false);
   };
 
-  useEffect(getMovies, [orderField, search]);
+  useEffect(() => {
+    getMovies();
+  }, [orderField, search]);
 
   const ListMovies = () =>
     movies.map((movie) => (
@@ -100,7 +102,6 @@ const Home = () => {
             name="search"
             type="text"
             placeholder="Search your movie"
-            light
           />
           <Search loading={loading} type="submit">
             search
@@ -108,13 +109,12 @@ const Home = () => {
         </div>
 
         <div>
-          <label>Order by: </label>
+          <label style={{color: '#000'}}>Order by: </label>
           <select
             id="orderBy"
             name="orderBy"
             value={orderField}
             onChange={(e) => setOrderField(e.target.value)}
-            light
           >
             <option value="name">Name</option>
             <option value="director">Director</option>

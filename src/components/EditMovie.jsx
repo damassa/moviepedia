@@ -1,4 +1,7 @@
 import Modal from './style/Modal';
+import Form from "./style/Form";
+import Input from "./style/Input";
+import Button from "./style/Button";
 import { moviesRef } from "../firebase";
 import { useState } from "react";
 import { getFieldValue } from "../utils";
@@ -23,7 +26,7 @@ const EditMovie = ({ clickedOut, movie }) => {
     setUpdateLoading(true);
 
     try {
-      const image = getFieldValue("image");
+      const image = getFieldValue("image", false);
       const name = getFieldValue("name");
       const director = getFieldValue("director");
       const year = getFieldValue("year");
@@ -33,7 +36,7 @@ const EditMovie = ({ clickedOut, movie }) => {
       await moviesRef.child(movie.id).update(data);
       clickedOut();
     } catch (error) {
-      console.log("Error");
+      console.log(error);
     }
 
     setUpdateLoading(false);
@@ -44,42 +47,43 @@ const EditMovie = ({ clickedOut, movie }) => {
       <h2>
         Edit your movie
       </h2>
-      <form onSubmit={updateMovie}>
-        <input
+      <Form onSubmit={updateMovie}>
+        <Input
           type="text"
           name="image"
           placeholder="image"
           defaultValue={movie.image}
         />
-        <input
+        <Input
           type="text"
           name="name"
           placeholder="name"
           defaultValue={movie.name}
         />
-        <input
+        <Input
           type="text"
           name="director"
           placeholder="director"
           defaultValue={movie.director}
         />
-        <input
+        <Input
           type="text"
+          name="year"
           placeholder="year"
           defaultValue={movie.year}
         />
-        <button type="submit" loading={updateLoading}>
+        <Button type="submit" loading={updateLoading}>
           change
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           color="red"
           onClick={deleteMovie}
           loading={deleteLoading}
         >
           delete
-        </button>
-      </form>
+        </Button>
+      </Form>
     </Modal>
   );
 };
