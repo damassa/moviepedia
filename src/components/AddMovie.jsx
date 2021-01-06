@@ -1,4 +1,7 @@
 import Modal from "./style/Modal";
+import Form from "./style/Form";
+import Input from "./style/Input";
+import Button from "./style/Button";
 import { moviesRef } from "../firebase";
 import { useState } from "react";
 import { getFieldValue } from "../utils";
@@ -30,19 +33,19 @@ const AddMovie = ({ clickedOut }) => {
       <h1>
         Add a new movie
       </h1>
-      <form onSubmit={insert}>
-        <input type="text" name="image" placeholder="image" />
-        <input type="text" name="name" placeholder="name" />
-        <input type="text" name="director" placeholder="director" />
-        <input
+      <Form onSubmit={insert}>
+        <Input type="text" name="image" placeholder="image" />
+        <Input type="text" name="name" placeholder="name" />
+        <Input type="text" name="director" placeholder="director" />
+        <Input
           type="text"
           name="year"
           placeholder="year"
         />
-        <button type="submit" loading={loading}>
+        <Button type="submit" loading={loading}>
           add
-        </button>
-      </form>
+        </Button>
+      </Form>
     </Modal>
   );
 };
