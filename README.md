@@ -1,3 +1,11 @@
+# Moviepedia
+
+  Trabalho final feito para a APNP Banco de Dados Avançado do curso de TSI do IFSul Campus Pelotas. 
+  
+## Ferramentas Usadas
+   React, Firebase
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
